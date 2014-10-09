@@ -8,7 +8,7 @@ int main(){
   head=(song *)malloc(sizeof(song));
   strcpy(head->nam,"Everlong");
   strcpy(head->art,"Foo Fighters");
-  head=insert_front(new_song("Eye of the Tiger","That band"));
+  //head=insert_front(new_song("Eye of the Tiger","That band"));
   
   //tests
   //printf("Current List: ");
@@ -21,8 +21,8 @@ int main(){
 
 song new_song(char* n, char* a){
   song s;
-  s.nam=n;
-  s.art=a;
+  strcpy(s.nam,n);
+  strcpy(s.art,a);
   return s;
 }
 
