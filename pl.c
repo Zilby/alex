@@ -8,6 +8,7 @@ int main(){
   head=insert_front(head,new_song("Everlong","Foo Fighters"));
   print_songs(head);
   print_song(find_song(head,"Everlong"));
+  print_song(find_song(head,"Everlog"));
   free_songs(head);
   //tests
   //printf("Current List: ");
@@ -40,7 +41,11 @@ int print_songs(song* t){
 }
 
 int print_song(song* t){
-  printf("Name: %s, Artist: %s\n",t->nam,t->art);
+  if(t){
+    printf("Name: %s, Artist: %s\n",t->nam,t->art);
+  }else{
+    printf("No song found\n");
+  }
   return 0;
 }
 
@@ -68,12 +73,12 @@ song *free_songs(song* t){
 
 song *find_song(song* t,char* name){
   while(t){
-    printf("hi\n");
-    if((t->nam)==name){
+    if(strcmp((t->nam),name)==0){
       return t;
     }else{
       t=t->next;
     }
-  }return 0;
+  }
+  return t;
 }
 
