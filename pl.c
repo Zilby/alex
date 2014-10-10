@@ -4,12 +4,11 @@
 #include "pl.h"
 
 int main(){
-  song *head;
-  head=(song *)malloc(sizeof(song));
-  strcpy(head->nam,"Everlong");
-  strcpy(head->art,"Foo Fighters");
-  //head=insert_front(new_song("Eye of the Tiger","That band"));
-  
+  song *head=new_song("Eye of the Tiger","That band");
+  head=insert_front(head,new_song("Everlong","Foo Fighters"));
+  print_songs(head);
+  print_song(find_song(head,"Everlong"));
+  free_songs(head);
   //tests
   //printf("Current List: ");
   //print_list(head);
@@ -19,43 +18,62 @@ int main(){
   //head=free_list(head);
 }
 
-song new_song(char* n, char* a){
-  song s;
-  strcpy(s.nam,n);
-  strcpy(s.art,a);
+song *new_song(char* n, char* a){
+  song *s;
+  s=(song*)malloc(sizeof(song));
+  strcpy(s->nam,n);
+  strcpy(s->art,a);
   return s;
 }
 
-int print_list(song* t){
+int print_songs(song* t){
   while(t){
-    printf("%c",t->nam);
+    if(t->next){
+      printf("%s, ",t->nam);
+    }else{
+      printf("%s",t->nam);
+    }
     t=t->next;
   }
   printf("\n");
   return 0;
 }
 
-/*
-foo *insert_front(foo* h,char c){
-  foo *g;
-  g=(foo *)malloc(sizeof(foo));
-  g->c=c;
-  g->next=h;
-  return g;
+int print_song(song* t){
+  printf("Name: %s, Artist: %s\n",t->nam,t->art);
+  return 0;
 }
 
-foo *free_list(foo* h){
-  foo *temp;
-  while(h){
-    temp=h;
-    h=h->next;
-    printf("Freeing the node: %c\n",temp->c);
+
+song *insert_front(song* t,song* s){
+  s->next=t;
+  return s;
+}
+
+
+song *free_songs(song* t){
+  song *temp;
+  while(t){
+    temp=t;
+    t=t->next;
+    printf("Freeing the node: %s\n",temp->nam);
     free(temp);
-    if(h){
+    if(t){
       printf("List after free: ");
-      print_list(h);
+      print_songs(t);
     }
   }
-  return h;
+  return t;
 }
-*/
+
+song *find_song(song* t,char* name){
+  while(t){
+    printf("hi\n");
+    if((t->nam)==name){
+      return t;
+    }else{
+      t=t->next;
+    }
+  }return 0;
+}
+
