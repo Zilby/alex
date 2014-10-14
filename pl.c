@@ -105,12 +105,12 @@ song *first_art_song(song* t,char* name){
 }
 
 song *remove_song(song* t,char* name){
-  if(name==0){
-      return head;
-  }
   int first=1;
   song* prior=t;
   song* head=t;
+  if(name==0){
+      return head;
+  }
   while(t){
     if(strcmp((t->nam),name)==0){
       if(first){
