@@ -4,7 +4,7 @@
 #include "pl.h"
 
 int main(){
-  printf("\nTESTS_FOR_INITIAL_ARRAYS________________________\n\n");
+  printf("\nTESTS_FOR_INITIAL_NODES________________________\n\n");
   song *head=new_song("Eye of the Tiger","That band");
   head=insert_front(head,new_song("Everlong","Foo Fighters"));
   printf("Added 2 songs (insert front):\n");
@@ -47,7 +47,20 @@ int main(){
   table=add_song(table,new_song("I Walk Alone","Klaypex"));
   table=add_song(table,new_song("Misery","Green Day"));
   table=add_song(table,new_song("Best of You","Foo Fighters"));
-  table=add_song(table,new_song("It ain't over till it's over","Falling In Reverse"));
+  table=add_song(table,new_song("it ain't over till it's over","Falling In Reverse"));
   table=add_song(table,new_song("The Cell","C2C"));
   print_t_songs(table);
+  printf("\nSongs starting with i: ");
+  print_letter(table,'i');
+  printf("\nLooked for I Walk Alone: ");
+  print_song(find_song_t(table, "I Walk Alone"));
+  printf("\nLooked for first song by Klaypex: ");
+  print_song(find_art_t(table, "Klaypex"));
+  printf("\nRemoved an In the End: I: ");
+  table=delete_song(table,"In the End");
+  print_letter(table,'i');
+    
+  printf("\nDeleting Table: \n");
+  delete_table(table);
+  printf("\nEND_OF_TESTS________________________\n\n");
 }

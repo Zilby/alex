@@ -14,12 +14,12 @@ song *first_art_song(song* t,char* name);//x
 song *find_song(song* t,char* name); //x
 song *remove_song(song* t,char* name); //x
 
-song *add_song(song**t,song* s);
-song *find_song_t(song** t,char* name);
-song *find_art_t(song** t,char* name);
-int print_letter(song** t,char c);
+song **add_song(song**t,song* s); //x
+song *find_song_t(song** t,char* name);//x
+song *find_art_t(song** t,char* name); //x
+int print_letter(song** t,char c); //x
 int print_art_songs(song** t,char* name);
-int print_t_songs(song** t);
+int print_t_songs(song** t); //x
 int shuffle(song** t);
-int delete_song(song** t,char* name);
-int delete_table(song** t);
+song** delete_song(song** t,char* name); //x
+int delete_table(song** t); //x

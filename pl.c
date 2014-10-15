@@ -114,15 +114,21 @@ song *remove_song(song* t,char* name){
   int first=1;
   song* prior=t;
   song* head=t;
+  song* temp;
   if(name==0){
       return head;
   }
   while(t){
     if(strcmp((t->nam),name)==0){
       if(first){
-	return t->next;
+	temp=t->next;
+	t=0;
+	free(t);
+	return temp;
       }else{
 	prior->next=t->next;
+	t=0;
+	free(t);
 	return head;
       }
     }
