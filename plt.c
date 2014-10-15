@@ -81,28 +81,6 @@ int delete_table(song** t){
   free(t);
 }
 
-/*
-int print_art_songs(song** t,char* name){
-  song* temp=find_art_t(t,name);
-  if(temp){
-    song* head;
-    head=new_song(temp->nam,temp->art);
-    int first=0;
-    while(temp){
-      if(first){
-	insert_order(head,new_song(temp->nam,temp->art));
-      }else{
-	first=1;
-      }
-      t=delete_song(t,temp->nam);
-      temp=find_art_t(t,name);
-    }
-    print_songs(head);
-    free_songs(head);
-  }return 0;
-}
-*/
-
 int print_art_songs(song** t,char* name){
   int first=1;
   int i=0;
@@ -127,5 +105,29 @@ int print_art_songs(song** t,char* name){
       temp2=t[i];
     }
   }printf("\n");
+  return 0;
+}
+
+int shuffle(song** t,int i){
+  while(i){
+    int r = rand()%26;
+    while(t[r]==0){
+      r=rand()%26;
+    }
+    song* temp=t[r];
+    int count = 0;
+    while(temp){
+      count++;
+      temp=temp->next;
+    }
+    int r2 = rand()%(count);
+    temp=t[r];
+    while(r2){
+      temp=temp->next;
+      r2--;
+    }
+    print_song(temp);
+    i--;
+  }
   return 0;
 }

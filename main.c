@@ -63,6 +63,8 @@ int main(){
   print_letter(table,'i');
   printf("\nAll songs by the Foo Fighters: "); 
   print_art_songs(table,"Foo Fighters");
+  printf("\n5 randomly selected songs (May include repeats): \n");
+  shuffle(table,5);
 
   printf("\nDeleting Table: \n");
   delete_table(table);
