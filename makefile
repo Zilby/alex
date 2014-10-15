@@ -1,7 +1,6 @@
 all: main.o pl.o plt.o
 	gcc -o Run main.o pl.o plt.o
 	./Run
-	make clean
 
 main.o: main.c pl.h
 	gcc -c main.c
