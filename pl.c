@@ -40,31 +40,36 @@ song *insert_front(song* t,song* s){
 }
 
 song *insert_order(song* t,song* s){
-  song* temp;
-  song* head=t;
-  int first=1;
-  while(t){   
-    song* temp=t->next;
-    if(first){
-      if(strcmp(t->nam,s->nam)>0){
-	s->next=t;
-	return s;
+  if(t){
+    song* temp;
+    song* head=t;
+    int first=1;
+    while(t){   
+      song* temp=t->next;
+      if(first){
+	if(strcmp(t->nam,s->nam)>0){
+	  s->next=t;
+	  return s;
+	}
       }
-    }
-    else if(t->next==0){
-      t->next=s;
-      return head;
-    }
-    else if((strcmp(t->nam,s->nam)<=0)&&(strcmp(temp->nam,s->nam)>0)){
-      t->next=s;
-      s->next=temp;
-      return head;
-    }
-    t=t->next;
-    if(first){
-      first=0;
-    }
-  } return head;
+      if(t->next==0){
+	t->next=s;
+	return head;
+      }
+      if((strcmp(t->nam,s->nam)<=0)&&(strcmp(temp->nam,s->nam)>0)){
+	t->next=s;
+	s->next=temp;
+	return head;
+      }
+      t=t->next;
+      if(first){
+	first=0;
+      }
+    } 
+    return head;
+  }else{
+    return s;
+  }
 }
 
 song *free_songs(song* t){
@@ -73,6 +78,7 @@ song *free_songs(song* t){
     temp=t;
     t=t->next;
     printf("Freeing the node: %s\n",temp->nam);
+    temp=0;
     free(temp);
     if(t){
       printf("List after free: ");

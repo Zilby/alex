@@ -12,5 +12,14 @@ song *insert_order(song* t,song* s); //x
 song *free_songs(song* t); //x
 song *first_art_song(song* t,char* name);//x
 song *find_song(song* t,char* name); //x
-song *remove_song(song* t,char* name); 
-song *add_song(song* s);
+song *remove_song(song* t,char* name); //x
+
+song *add_song(song**t,song* s);
+song *find_song_t(song** t,char* name);
+song *find_art_t(song** t,char* name);
+int print_letter(song** t,char c);
+int print_art_songs(song** t,char* name);
+int print_t_songs(song** t);
+int shuffle(song** t);
+int delete_song(song** t,char* name);
+int delete_table(song** t);

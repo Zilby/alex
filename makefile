@@ -1,5 +1,5 @@
-all: main.o pl.o 
-	gcc -o Run main.o pl.o
+all: main.o pl.o plt.o
+	gcc -o Run main.o pl.o plt.o
 	./Run
 	make clean
 
@@ -8,6 +8,9 @@ main.o: main.c pl.h
 
 pl.o: pl.c pl.h
 	gcc -c pl.c
+
+plt.o: plt.c pl.h
+	gcc -c plt.c
 
 clean: 
 	rm *o
