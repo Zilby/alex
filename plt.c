@@ -80,3 +80,52 @@ int delete_table(song** t){
   t=0;
   free(t);
 }
+
+/*
+int print_art_songs(song** t,char* name){
+  song* temp=find_art_t(t,name);
+  if(temp){
+    song* head;
+    head=new_song(temp->nam,temp->art);
+    int first=0;
+    while(temp){
+      if(first){
+	insert_order(head,new_song(temp->nam,temp->art));
+      }else{
+	first=1;
+      }
+      t=delete_song(t,temp->nam);
+      temp=find_art_t(t,name);
+    }
+    print_songs(head);
+    free_songs(head);
+  }return 0;
+}
+*/
+
+int print_art_songs(song** t,char* name){
+  int first=1;
+  int i=0;
+  song* temp2=t[i];
+  while(i<26){
+    song* temp=first_art_song(temp2,name);
+    if(temp){
+      if(strcmp(temp->art,name)==0){
+	if(first){
+	  printf("%s",temp->nam);
+	  first=0;
+	}else{
+	  printf(", %s",temp->nam);
+	}
+	temp2=t[i]->next;
+      }else{
+	i++;
+	temp2=t[i];
+      }
+    }else{
+      i++;
+      temp2=t[i];
+    }
+  }printf("\n");
+  return 0;
+}

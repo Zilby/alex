@@ -47,6 +47,8 @@ int main(){
   table=add_song(table,new_song("I Walk Alone","Klaypex"));
   table=add_song(table,new_song("Misery","Green Day"));
   table=add_song(table,new_song("Best of You","Foo Fighters"));
+  table=add_song(table,new_song("Everlong","Foo Fighters"));
+  table=add_song(table,new_song("Walk","Foo Fighters"));
   table=add_song(table,new_song("it ain't over till it's over","Falling In Reverse"));
   table=add_song(table,new_song("The Cell","C2C"));
   print_t_songs(table);
@@ -57,9 +59,11 @@ int main(){
   printf("\nLooked for first song by Klaypex: ");
   print_song(find_art_t(table, "Klaypex"));
   printf("\nRemoved an In the End: I: ");
-  table=delete_song(table,"In the End");
+  delete_song(table,"In the End");
   print_letter(table,'i');
-    
+  printf("\nAll songs by the Foo Fighters: "); 
+  print_art_songs(table,"Foo Fighters");
+
   printf("\nDeleting Table: \n");
   delete_table(table);
   printf("\nEND_OF_TESTS________________________\n\n");
